@@ -1,6 +1,6 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version "e3d1762"
+    id 'fabric-loom' version "0.4-SNAPSHOT"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -28,6 +28,9 @@ repositories {
 }
 
 minecraft {
+    intermediaryUrl = {
+        return "https://dl.bintray.com/legacy-fabric/Legacy-Fabric-Maven/net/fabricmc/intermediary/" + it + "/intermediary-" + it + "-v2.jar";
+    }
 }
 
 dependencies {
