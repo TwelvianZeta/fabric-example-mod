@@ -11,19 +11,13 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    mavenCentral()
-    jcenter()
     maven {
-        name = 'Fabric'
-        url = 'http://maven.fabricmc.net/'
+        name = 'legacy-fabric'
+        url = 'https://dl.bintray.com/legacy-fabric/Legacy-Fabric-Maven'
     }
     maven {
         name = 'Jitpack'
         url = 'https://jitpack.io'
-    }
-    maven {
-        name = 'legacy-fabric'
-        url = 'https://dl.bintray.com/legacy-fabric/Legacy-Fabric-Maven'
     }
 }
 
