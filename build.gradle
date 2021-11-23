@@ -1,6 +1,6 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version "0.10-SNAPSHOT"
+    id 'fabric-loom' version "0.7-SNAPSHOT"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -15,14 +15,18 @@ repositories {
         name = 'legacy-fabric'
         url = 'https://maven.legacyfabric.net'
     }
-    maven {
-        name = 'Jitpack'
-        url = 'https://jitpack.io'
-    }
 }
 
+// Comment out this block if you're using Chocoloom
+// Comment when using loom 0.10
+minecraft {
+    intermediaryUrl = {
+        return "https://maven.legacyfabric.net/net/fabricmc/intermediary/" + it + "/intermediary-" + it + "-v2.jar";
+    }
+}
 loom {
-    setIntermediaryUrl('https://maven.legacyfabric.net/net/fabricmc/intermediary/%1$s/intermediary-%1$s-v2.jar');
+// Uncomment when using loom 0.10
+//	setIntermediaryUrl('https://maven.legacyfabric.net/net/fabricmc/intermediary/%1$s/intermediary-%1$s-v2.jar');
 }
 
 dependencies {
@@ -48,7 +52,6 @@ tasks.withType(JavaCompile).configureEach {
     // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
     // If Javadoc is generated, this must be specified in that task too.
     it.options.encoding = "UTF-8"
-
     it.options.release = 8
 }
 
@@ -69,13 +72,7 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
+            from components.java
         }
     }
 
