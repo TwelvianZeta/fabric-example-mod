@@ -29,8 +29,8 @@ loom {
 }
 
 dependencies {
-	implementation 'org.apache.logging.log4j:log4j-core:2.8.1'
-	implementation 'org.apache.logging.log4j:log4j-api:2.8.1'
+	implementation 'org.apache.logging.log4j:log4j-core:2.17.0'
+	implementation 'org.apache.logging.log4j:log4j-api:2.17.0'
 
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
